@@ -1,0 +1,34 @@
+version: '3'
+services:
+  # NameServer 服务
+  rocketmq-namesrv:
+    image: apache/rocketmq:5.1.1
+    container_name: rocketmq-namesrv
+    ports:
+      - "9876:9876"  # 映射 NameServer 的端口
+    volumes:
+      - ./conf/namesrv:/opt/rocketmq-5.1.1/conf  # 映射配置文件目录
+    command: sh mqnamesrv # 启动 NameServer
+
+  # Broker 服务
+  rocketmq-broker:
+    image: apache/rocketmq:5.1.1
+    container_name: rocketmq-broker
+    depends_on:
+      - rocketmq-namesrv  # 依赖于 NameServer 启动完毕
+    ports:
+      - "10911:10911"  # 映射 Broker 的端口
+      - "10909:10909"  # 映射 Broker 的 HA 端口
+    volumes:
+      - ./conf/broker:/opt/rocketmq-5.1.1/conf
+      # 映射配置文件目录
+    command: sh mqbroker -c /opt/rocketmq-5.1.1/conf/broker.conf -n rocketmq-namesrv:9876  # 启动 Broker，连接到 NameServer  # 启动 Broker，连接到 NameServer
+
+  # RocketMQ Console 服务
+  rocketmq-console:
+    image: styletang/rocketmq-console-ng
+    container_name: rocketmq-console
+    ports:
+      - "8083:8080"  # 映射 RocketMQ Console 的端口
+    environment:
+      - rocketmq.config.namesrvAddr=rocketmq-namesrv:9876  # 配置 RocketMQ Console 连接的 NameServer 地址
