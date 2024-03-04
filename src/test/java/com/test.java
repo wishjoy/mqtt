@@ -1,6 +1,6 @@
 package com;
 
-import com.project.collection.utils.TimeUtil;
+import com.project.jnzk.utils.TimeUtil;
 
 import java.time.Instant;
 import java.time.LocalDate;

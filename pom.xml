@@ -238,7 +238,7 @@
 <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
 <!--                <version>${spring-boot.version}</version>-->
 <!--                <configuration>-->
-<!--                    <mainClass>com.project.collection.MqttApplication</mainClass>-->
+<!--                    <mainClass>com.project.jnzk.MqttApplication</mainClass>-->
 <!--                    <skip>true</skip>-->
 <!--                </configuration>-->
 <!--                <executions>-->
