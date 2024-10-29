@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.99.157.56:3306/collection?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://47.99.157.56:3306/collection?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     username: root
-    password: y2w4z6j8
+    password: 6yhnmju7
     type: com.alibaba.druid.pool.DruidDataSource
 
     druid:

@@ -16,6 +16,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,7 +37,7 @@ public class MeterElectricEnergyServiceImpl extends ServiceImpl<MeterElectricEne
             meter.setId(UUID.randomUUID().toString());
             meter.setCollectionId(meterEl.getCollectionId());
             meter.setGatewaySn(meterEl.getGatewaySn());
-            meter.setGatewayTime(Instant.now().atZone(ZoneId.of("Asia/Shanghai")).toInstant());
+            meter.setGatewayTime(new Date());
             meter.setMeterSn(meterEl.getMeterSn());
             meter.setValue(meterEl.getValue());
             //获取上一次测点值

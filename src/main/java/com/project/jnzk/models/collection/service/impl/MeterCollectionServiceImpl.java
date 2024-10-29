@@ -62,7 +62,7 @@ public class MeterCollectionServiceImpl extends ServiceImpl<MeterCollectionMappe
                     meter.setId(UUID.randomUUID().toString());
                     meter.setCollectionId(meterCollection.getId());
                     meter.setGatewaySn(gateWaySn);
-                    meter.setGatewayTime(Instant.now().atZone(ZoneId.of("Asia/Shanghai")).toInstant());
+                    meter.setGatewayTime(new Date());
                     meter.setMeterSn(meterCollection.getMeterSn());
                     meter.setValue(meterCollection.getPointValue());
                     meterElectricEnergyList.add(meter);

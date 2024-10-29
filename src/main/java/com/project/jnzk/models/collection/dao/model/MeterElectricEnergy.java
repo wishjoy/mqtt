@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 
 /**
  电表历史功率表
@@ -33,7 +34,7 @@ public class MeterElectricEnergy implements Serializable {
     private String gatewaySn;
 
     @ApiModelProperty(value = "网关上报时间")
-    private Instant gatewayTime;
+    private Date gatewayTime;
 
     @ApiModelProperty(value = "电表序列号")
     private String meterSn;
