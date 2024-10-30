@@ -56,7 +56,9 @@ public class MqttSubscriber {
                         log.info("Received message from topic " + topic + ": " + payload);
                         //JSONArray json = (JSONArray) JSONObject.parse(payload);
                         JSONObject json = (JSONObject) JSONObject.parse(payload);
-                        DateType dateType = DateType.valueOf(json.get("type").toString().toUpperCase());
+                        String type = json.getString("type");
+                        DateType dateType = ("heart".equals(type) || "real".equals(type)) ?
+                                DateType.valueOf(json.get("type").toString().toUpperCase()) : DateType.valueOf("OTHER");
 
                         switch (dateType) {
                             case HEART:

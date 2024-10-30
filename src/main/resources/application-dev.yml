@@ -1,12 +1,12 @@
-          server:
+server:
   port: 8085
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.99.157.56:3307/collection?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://47.99.157.56:3306/collection?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     username: root
-    password: wish0123.
+    password: 6yhnmju7
     type: com.alibaba.druid.pool.DruidDataSource
 
     druid:
@@ -44,10 +44,9 @@ spring:
       # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
   redis:
-    host: localhost # Redis服务器地址
-    database: 0 # Redis数据库索引（默认为0）
-    port: 6379 # Redis服务器连接端口
-    password: # Redis服务器连接密码（默认为空）
+    host: 127.0.0.1
+    port: 6379
+    #password: 6yhnmju7
     timeout: 3000ms # 连接超时时间（毫秒）
     pool:
       max-active: 8
@@ -70,11 +69,15 @@ mqtt:
     body-move-message: /pub/BodyMoveMessage/tosl
     electricity-meter: /dingiiot/linkqi/pub/202308283507
 
-logging:
-  level:
-    root: info
-    com.macro.mall: debug
+  logging:
+    level:
+      root: info
+      com.macro.mall: debug
+    file: /opt/enegySaving/mq-collection.log
+
 scheduled:
   cron:
-    #meterElectricDay: 0/5 * * * * ?
     meterElectricDay: 0 0 1 * * ?
+
+
+
